@@ -1,5 +1,8 @@
+import Head from "next/head";
 import Link from "next/link";
 import { client } from "../libs/client";
+import styles from "../styles/Home.module.scss";
+import Header from "../components/Header";
 
 /**
  * APIからブログデータを引っ張ってくる
@@ -23,17 +26,25 @@ export const getStaticProps = async () => {
  */
 export default function Home({ blog }) {
   return (
-    <div>
-      <ul>
-        {blog.map((blog) => (
-          <li key={blog.id}>
-            <Link href={`/blog/${blog.id}`}>
-              <span>{blog.title}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <Head>
+        <title> トップページ | Mogy-Blog</title>
+      </Head>
+      <Header />
+      <main className={styles.main}>
+        <div>
+          <ul>
+            {blog.map((blog) => (
+              <li key={blog.id}>
+                <Link href={`/blog/${blog.id}`}>
+                  <span>{blog.title}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </main>
+    </>
   );
 }
 

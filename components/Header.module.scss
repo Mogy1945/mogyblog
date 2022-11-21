@@ -1,0 +1,41 @@
+.header {
+    position: fixed;
+    width: 100vw;
+    background-color: #8EE3C8;
+    top: 0;
+    color: #3956A3;
+
+    .nav {
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ul {
+        display: flex;
+
+        li {
+            margin-left: 3rem;
+
+            a {
+                display: block;
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+
+        }
+    }
+
+    //SP
+    @media screen and (max-width:550px) {
+        a {
+            &:active {
+                transform: scale(.95);
+                opacity: 0.8;
+
+            }
+        }
+    }
+}
