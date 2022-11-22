@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import { client } from "../libs/client";
+import client from "../libs/client";
 import styles from "../styles/Home.module.scss";
 import Header from "../components/Header";
 
@@ -28,7 +28,7 @@ export default function Home({ blog }) {
   return (
     <>
       <Head>
-        <title> トップページ | Mogy-Blog</title>
+        <title>Blog | Mogy-Blog</title>
       </Head>
       <Header />
       <main className={styles.main}>
