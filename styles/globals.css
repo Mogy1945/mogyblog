@@ -58,7 +58,8 @@ a {
   box-sizing: border-box;
 }
 
-input,textarea {
+input,
+textarea {
   outline: none;
 }
 
@@ -67,6 +68,11 @@ input,textarea {
   border-color: #8EE3C8 !important;
   box-shadow: 0 0 8px 0 #8EE3C8 !important;
   transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+/* 各ページのHeader処理 */
+.current a{
+  border-bottom: rgba(57, 86, 163, 0.8) solid 1px;
 }
 
 @media (prefers-color-scheme: dark) {
