@@ -32,8 +32,12 @@ export default function Home({ blog }) {
       </Head>
       <Header />
       <main className={styles.main}>
+        <h3>Blog</h3>
+        <p>
+          【サイト利用技術】Next.js、SSG、SCSS、microCMS、nodemailer、Vercel
+        </p>
         <div>
-          <ul>
+          <ul className={styles.blogContainer}>
             {blog.map((blogDate) => (
               <li key={blogDate.id}>
                 <Link href={`/blog/${blogDate.id}`}>
