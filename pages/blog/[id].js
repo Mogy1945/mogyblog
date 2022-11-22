@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import client from '../../libs/client'
 import styles from '../../styles/Home.module.scss'
 
@@ -55,6 +56,7 @@ export default function BlogId({ blog }) {
         }}
         className={styles.post}
       />
+      <Link href="/">ホームに戻る</Link>
     </main>
   )
 }
