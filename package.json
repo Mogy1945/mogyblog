@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "eslint": "8.28.0",
     "eslint-config-next": "13.0.4",
     "eslint-config-prettier": "^8.5.0",
     "microcms-js-sdk": "^2.3.2",
@@ -22,6 +21,7 @@
     "sass": "^1.56.1"
   },
   "devDependencies": {
+    "eslint": "^8.28.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
