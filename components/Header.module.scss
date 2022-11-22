@@ -28,6 +28,7 @@
                 font-family: HEAD_FONT, sans-serif;
                 &:hover {
                     opacity: 0.8;
+                    border-bottom: 1px solid rgba($color: #3956A3, $alpha: 0.8);
                 }
             }
 
