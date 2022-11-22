@@ -4,16 +4,26 @@
     "es2021": true
   },
   "parserOptions": {
-		"ecmaVersion": 13
-	},
+    "ecmaVersion": 13,
+    "sourceType": "module"
+  },
   "extends": [
     "eslint:recommended",
     "airbnb-base",
     "plugin:prettier/recommended",
+    "plugin:react/recommended",
     "plugin:@next/next/recommended"
   ],
   "rules": {
-    "no-console": "off"
+    "no-console": "off",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   },
   "ignorePatterns": [
     "/node_modules/",
