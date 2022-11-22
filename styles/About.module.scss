@@ -1,0 +1,123 @@
+@font-face {
+    font-family: 'HEAD_FONT';
+    src: url('/font/Lora-VariableFont_wght.ttf');
+}
+
+.main {
+    h3 {
+        margin-top: 8rem;
+        text-align: center;
+        font-size: 3rem;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    .profileContainer {
+        display: flex;
+        justify-content: center;
+        width: 80vw;
+        margin: 2rem auto;
+
+        .profileInfo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30vw;
+
+            img {
+                width: 20vw;
+            }
+        }
+
+        .profileText {
+            width: 30vw;
+
+            .profileHead {
+                font-family: HEAD_FONT, sans-serif;
+                font-size: 2rem;
+                text-align: left;
+                border-bottom: 1px solid #3956A3;
+                margin-top: 1rem;
+                width: 30vw;
+            }
+
+            .profileBox {
+                display: flex;
+                margin-top: 2rem;
+
+                .title {
+                    width: 10vw;
+                    color: #c0c0c0;
+                    margin-left: 2rem;
+                }
+
+                .text {
+                    width: 20vw;
+                    font-size: 2rem;
+                }
+
+                .historyText {
+                    width: 50vw;
+                    text-align: left;
+                }
+            }
+        }
+    }
+
+    //SP
+    @media screen and (max-width:550px) {
+        .profileContainer {
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+
+            .profileInfo {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+
+                img {
+                    width: 80%;
+                }
+            }
+
+            .profileText {
+                width: 100%;
+                margin-top: 2rem;
+
+                .profileHead {
+                    font-family: HEAD_FONT, sans-serif;
+                    font-size: 2rem;
+                    text-align: left;
+                    border-bottom: 1px solid #3956A3;
+                    margin-top: 1rem;
+                    width: 100%;
+                }
+
+                .profileBox {
+                    display: flex;
+                    margin-top: 2rem;
+
+                    .title {
+                        width: 100%;
+                        color: #c0c0c0;
+                        margin-left: 0;
+                    }
+
+                    .text {
+                        width: 100%;
+                        font-size: 2rem;
+                    }
+
+                    .historyText {
+                        width: 100%;
+                        text-align: left;
+                    }
+                }
+            }
+        }
+    }
+}
