@@ -10,10 +10,10 @@ export default function Header() {
             <Link href="/">Blog</Link>
           </li>
           <li>
-            <Link href="/skill-set">Skil-Set</Link>
+            <Link href="/About">About</Link>
           </li>
           <li>
-            <Link href="/contact">Contact</Link>
+            <Link href="/Contact">Contact</Link>
           </li>
         </ul>
       </nav>

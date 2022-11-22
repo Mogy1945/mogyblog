@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'HEAD_FONT';
+    src: url('/font/Lora-VariableFont_wght.ttf');
+  }
+
 .header {
     position: fixed;
     width: 100vw;
@@ -20,6 +25,7 @@
 
             a {
                 display: block;
+                font-family: HEAD_FONT, sans-serif;
                 &:hover {
                     opacity: 0.8;
                 }
