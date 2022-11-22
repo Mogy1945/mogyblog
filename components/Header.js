@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import styles from './Header.module.scss'
 import { useRouter } from 'next/router'
+import styles from './Header.module.scss'
 
 export default function Header() {
-  const router = useRouter();
+  const router = useRouter()
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
