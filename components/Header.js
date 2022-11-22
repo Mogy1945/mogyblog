@@ -7,8 +7,8 @@ export default function Header() {
             <nav className={styles.nav}>
                 <ul className={styles.ul}>
                     <li><Link href="/">Blog</Link></li>
-                    <li><Link href="/">Skil-Set</Link></li>
-                    <li><Link href="/">Contact</Link></li>
+                    <li><Link href="/skill-set">Skil-Set</Link></li>
+                    <li><Link href="/contact">Contact</Link></li>
                 </ul>
             </nav>
         </header>
