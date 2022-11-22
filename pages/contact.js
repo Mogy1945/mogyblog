@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Head from "next/head";
+import Header from '../components/Header';
 
 const Contact = () => {
     const [form, setForm] = useState({
@@ -33,54 +35,62 @@ const Contact = () => {
     };
 
     return (
-        <form>
-            <input
-                onChange={(e) => {
-                    const val = e.currentTarget.value;
-                    setForm((props) => ({
-                        ...props,
-                        name: val !== null ? val : '',
-                    }));
-                }}
-                value={form.name}
-                name="name"
-                type="text"
-                className="feedback-input"
-                placeholder="Name"
-            />
-            <input
-                onChange={(e) => {
-                    const val = e.currentTarget.value;
-                    setForm((props) => ({
-                        ...props,
-                        email: val !== null ? val : '',
-                    }));
-                }}
-                name="email"
-                type="text"
-                className="feedback-input"
-                placeholder="Email"
-            />
-            <textarea
-                onChange={(e) => {
-                    const val = e.currentTarget.value;
-                    setForm((props) => ({
-                        ...props,
-                        msg: val !== null ? val : '',
-                    }));
-                }}
-                name="text"
-                className="feedback-input"
-                placeholder="Comment"
-            ></textarea>
-            <input
-                onClick={async (e) => {
-                    await handleSubmit(e);
-                }}
-                type="submit"
-                value="SUBMIT"
-            />
-        </form>
+        <>
+            <Head>
+                <title>Contact | Mogy-Blog</title>
+            </Head>
+            <Header />
+            <main>
+                <form>
+                    <input
+                        onChange={(e) => {
+                            const val = e.currentTarget.value;
+                            setForm((props) => ({
+                                ...props,
+                                name: val !== null ? val : '',
+                            }));
+                        }}
+                        value={form.name}
+                        name="name"
+                        type="text"
+                        className="feedback-input"
+                        placeholder="Name"
+                    />
+                    <input
+                        onChange={(e) => {
+                            const val = e.currentTarget.value;
+                            setForm((props) => ({
+                                ...props,
+                                email: val !== null ? val : '',
+                            }));
+                        }}
+                        name="email"
+                        type="text"
+                        className="feedback-input"
+                        placeholder="Email"
+                    />
+                    <textarea
+                        onChange={(e) => {
+                            const val = e.currentTarget.value;
+                            setForm((props) => ({
+                                ...props,
+                                msg: val !== null ? val : '',
+                            }));
+                        }}
+                        name="text"
+                        className="feedback-input"
+                        placeholder="Comment"
+                    ></textarea>
+                    <input
+                        onClick={async (e) => {
+                            await handleSubmit(e);
+                        }}
+                        type="submit"
+                        value="SUBMIT"
+                    />
+                </form>
+            </main>
+        </>
     );
 };
 
