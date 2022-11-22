@@ -1,4 +1,4 @@
-import { createTransport } from 'nodemailer';
+import { createTransport } from 'nodemailer'
 
 export default async (req, res) => {
   const transporter = createTransport({
@@ -9,9 +9,9 @@ export default async (req, res) => {
       user: process.env.NEXT_PUBLIC_MAIL_USER,
       pass: process.env.NEXT_PUBLIC_MAIL_PASS,
     },
-  });
+  })
 
-  const data = JSON.parse(req.body);
+  const data = JSON.parse(req.body)
   await transporter.sendMail({
     from: process.env.NEXT_PUBLIC_MAIL_USER,
     to: data.email,
@@ -26,9 +26,9 @@ export default async (req, res) => {
     お問い合わせ内容
     ${data.msg}
     `,
-  });
+  })
 
   res.status(200).json({
     success: true,
-  });
-};
+  })
+}
