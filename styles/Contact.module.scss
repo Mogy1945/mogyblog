@@ -1,0 +1,93 @@
+@font-face {
+    font-family: 'MAIN_FONT';
+    src: url('/font/NotoSansJP-Regular.otf');
+}
+
+.main {
+    h3 {
+        margin-top: 8rem;
+        text-align: center;
+        font-size: 3rem;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    .formContainer {
+        background-color: white;
+        width: 40vw;
+        margin: 2rem auto;
+        padding: 4rem 1rem;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            input,
+            textarea {
+                width: 30vw;
+                margin-top: 2rem;
+            }
+
+            input {
+                height: 4rem;
+                border: 1px solid rgba($color: #3956A3, $alpha: 0.6);
+                font-family: MAIN_FONT, sans-serif;
+                transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+            }
+
+            textarea {
+                height: 8rem;
+                border: 1px solid rgba($color: #3956A3, $alpha: 0.6);
+                font-family: MAIN_FONT, sans-serif;
+                transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+            }
+
+            input::placeholder,
+            ::placeholder {
+                font-family: MAIN_FONT, sans-serif;
+                color: #979797;
+            }
+
+            .submit {
+                font-size: 1.6rem;
+                padding: 0.5rem;
+                color: rgb(255, 255, 255);
+                border: 1px solid rgba(100, 100, 100, 0);
+                background-color: #3956A3;
+                transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #F0FFFF;
+                    border: 1px solid #3956A3;
+                    color: #3956A3;
+                    font-weight: 550;
+                }
+            }
+        }
+    }
+
+    //SP
+    @media screen and (max-width:550px) {
+        .formContainer {
+            width: 80vw;
+            form {
+                input,textarea{
+                    width: 60vw;
+                }
+                .submit {
+                    &:active {
+                        transform: scale(.95);
+                        background-color: #F0FFFF;
+                        border: 1px solid #3956A3;
+                        color: #3956A3;
+                        font-weight: 550;
+                    }
+                }
+            }
+        }
+    }
+}

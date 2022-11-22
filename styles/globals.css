@@ -58,6 +58,17 @@ a {
   box-sizing: border-box;
 }
 
+input,textarea {
+  outline: none;
+}
+
+/* Contactでフォーカス時の処理 */
+.focused {
+  border-color: #8EE3C8 !important;
+  box-shadow: 0 0 8px 0 #8EE3C8 !important;
+  transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
