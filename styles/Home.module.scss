@@ -22,7 +22,7 @@
   .blogContainer {
     margin-top: 3rem;
 
-    li {
+    li .linkBox{
       display: flex;
       border: none;
       padding-bottom: 3rem;
@@ -137,9 +137,13 @@
 
     .blogContainer {
 
-      li {
+      li .linkBox{
         .blogRight {
           padding-left: 0;
+          .blogRightTitle{
+            color: #3956A3;
+            padding-top: 0;
+          }
           .blogRightDetail{
             padding-left: 0;
           }
