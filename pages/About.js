@@ -15,7 +15,7 @@ export default function About() {
         <div className={styles.profileContainer}>
           <div className={styles.profileInfo}>
             <Image
-              src="/vercel.svg"
+              src="https://source.unsplash.com/random"
               alt="プロフィール画像"
               width={500}
               height={200}
