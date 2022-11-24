@@ -45,7 +45,7 @@ export default function About() {
               <p className={styles.historyText}>
                 1994/09/28 生誕。宮崎県都城市出身。
                 <br />
-                株式会社シャノンで自社システムのフロントエンジニアとして勤務。
+                SaaS企業で自社システムのフロントエンジニアとして勤務。
                 <br />
                 利用スキルは、HTML、CSS、jQuery。
                 <br />
@@ -60,11 +60,11 @@ export default function About() {
                 1年8カ月勤めるも、将来のスキル不安を感じ退職を決意。
                 <br />
                 <br />
-                ハローワークでWEB系の職業訓練校のチラシを見て、インタークロスに入学。
+                ハローワークでWEB系の職業訓練校のチラシを見て、職業訓練校に入学。
                 半年間、illustrator、Photoshop、コーディングの勉強を行う。
                 <br />
                 <br />
-                卒業後、株式会社シャノンに入社。
+                卒業後、現SaaS企業に入社。
                 <br />
                 自社システムを用いてWEBサイトを制作しています。（2022/11で2年経過）
                 <br />
