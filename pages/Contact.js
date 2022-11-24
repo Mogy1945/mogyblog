@@ -14,6 +14,9 @@ const Contact = () => {
   const [focusEmailFlag, setFocusEmailFlag] = useState('')
   const [focusCommentFlag, setFocusCommentFlag] = useState('')
 
+  const [modalFlag, setmodalFlag] = useState(false)
+  const [modalOKFlag, setmodalOKFlag] = useState(false)
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -27,10 +30,13 @@ const Contact = () => {
     })
       .then((res) => {
         console.log('Response received')
+        setmodalFlag(true)
         if (res.status === 200) {
           console.log('Response succeeded!')
+          setmodalOKFlag(true)
         } else {
           console.log(`Error: Status Code ${res.status}`)
+          setmodalOKFlag(false)
         }
       })
       .catch((error) => {
@@ -118,6 +124,38 @@ const Contact = () => {
             />
           </form>
         </div>
+        {modalFlag ? (
+          <>
+            <div className={styles.modalContainer}>
+              <p className={styles.modalTitle}>
+                {modalOKFlag ? 'Success!' : 'NG'}
+              </p>
+              {modalOKFlag ? (
+                <p className={styles.modalText}>
+                  送信しました！返信まで少々お待ちください。
+                </p>
+              ) : (
+                <p className={styles.modalText}>
+                  送信に失敗しました。全ての項目に記入しているか、
+                  <br className={styles.pc} />
+                  メールアドレスに間違いはないか、今一度ご確認をお願いいたします。
+                </p>
+              )}
+              <button
+                className={styles.modalButton}
+                onClick={() => {
+                  setmodalFlag(false)
+                  setmodalOKFlag(false)
+                }}
+              >
+                閉じる
+              </button>
+            </div>
+            <div className={styles.modalBg}></div>
+          </>
+        ) : (
+          ''
+        )}
       </main>
     </>
   )

@@ -4,6 +4,10 @@
 }
 
 .main {
+    .pc {
+        display: block;
+    }
+
     h3 {
         margin-top: 8rem;
         text-align: center;
@@ -70,15 +74,138 @@
         }
     }
 
+    .modalContainer {
+        width: 50vw;
+        height: 50vh;
+        background-color: #D7EAFF;
+        position: absolute;
+        z-index: 1001;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+        transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+
+        .modalTitle {
+            font-size: 6rem;
+            color: #3956A3;
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateY(-20%) translateX(-50%);
+        }
+
+        .modalText {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translateY(-60%) translateX(-50%);
+        }
+
+        .modalButton {
+            cursor: pointer;
+            position: absolute;
+            top: 90%;
+            left: 50%;
+            transform: translateY(-70%) translateX(-50%);
+
+            font-size: 1.6rem;
+            padding: 0.5rem;
+            color: rgb(255, 255, 255);
+            border: 1px solid rgba(100, 100, 100, 0);
+            background-color: #3956A3;
+            transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+
+            &:hover {
+                background-color: #F0FFFF;
+                border: 1px solid #3956A3;
+                color: #3956A3;
+                font-weight: 550;
+            }
+        }
+    }
+
+    .modalBg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1000;
+        background-color: rgba($color: #000000, $alpha: 0.8);
+        transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+    }
+
     //SP
     @media screen and (max-width:550px) {
-        .formContainer {
-            width: 80vw;
-            form {
-                input,textarea{
-                    width: 60vw;
+            .pc {
+                display: none;
+            }
+
+            .formContainer {
+                width: 80vw;
+
+                form {
+
+                    input,
+                    textarea {
+                        width: 60vw;
+                    }
+
+                    .submit {
+                        &:active {
+                            transform: scale(.95);
+                            background-color: #F0FFFF;
+                            border: 1px solid #3956A3;
+                            color: #3956A3;
+                            font-weight: 550;
+                        }
+                    }
                 }
-                .submit {
+            }
+
+            .modalContainer {
+                width: 100vw;
+                height: 50vh;
+                background-color: #D7EAFF;
+                position: absolute;
+                z-index: 1001;
+                top: 50%;
+                left: 50%;
+                transform: translateY(-50%) translateX(-50%);
+                transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+
+                .modalTitle {
+                    font-size: 5rem;
+                    top: 10%;
+                    transform: translateY(-10%) translateX(-50%);
+                }
+
+                .modalText {
+                    top: 60%;
+                    transform: translateY(-60%) translateX(-50%);
+                }
+
+                .modalButton {
+                    cursor: pointer;
+                    position: absolute;
+                    top: 90%;
+                    left: 50%;
+                    transform: translateY(-70%) translateX(-50%);
+
+                    font-size: 1.6rem;
+                    padding: 0.5rem;
+                    color: rgb(255, 255, 255);
+                    border: 1px solid rgba(100, 100, 100, 0);
+                    background-color: #3956A3;
+                    transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+
+                    &:hover {
+                        background-color: #F0FFFF;
+                        border: 1px solid #3956A3;
+                        color: #3956A3;
+                        font-weight: 550;
+                    }
+
                     &:active {
                         transform: scale(.95);
                         background-color: #F0FFFF;
@@ -88,6 +215,6 @@
                     }
                 }
             }
-        }
+
     }
 }
