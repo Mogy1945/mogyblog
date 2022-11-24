@@ -71,8 +71,41 @@ textarea {
 }
 
 /* 各ページのHeader処理 */
-.current a{
+.current a {
   border-bottom: rgba(57, 86, 163, 0.8) solid 1px;
+}
+
+/* Blogのカテゴリ色 */
+.category {
+  width: 5vw;
+  border-radius: 15px;
+  text-align: center;
+  color: #ffffff;
+  margin: 1rem;
+}
+
+.category.TestCafe {
+  background-color: #1ca177;
+}
+
+.category.SCSS {
+  background-color: #9b0e75;
+}
+
+.category.Next_js {
+  background-color: #210514;
+}
+
+@media screen and (max-width:1182px) {
+  .category {
+    width: 15vw;
+  }
+}
+
+@media screen and (max-width:550px) {
+  .category {
+    width: 25vw;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
