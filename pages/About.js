@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import Image from 'next/image'
 import Header from '../components/Header'
 import styles from '../styles/About.module.scss'
@@ -20,6 +21,16 @@ export default function About() {
               width={500}
               height={200}
             />
+            <div className={styles.twitterIcon}>
+              <Link href="">
+                <Image
+                  src="/twitter-icon.png"
+                  alt="TwitterIcon"
+                  width={500}
+                  height={500}
+                />
+              </Link>
+            </div>
           </div>
           <div className={styles.profileText}>
             <p className={styles.profileHead}>Profile</p>
