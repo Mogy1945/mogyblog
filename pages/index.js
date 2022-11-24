@@ -64,7 +64,9 @@ export default function Home({ blog }) {
                   <div className={styles.blogRight}>
                     <p className={styles.blogRightTitle}>{blogDate.title}</p>
                     <p className={styles.blogRightDetail}>{blogDate.detail}</p>
-                    <p className={styles.blogRightDate}>{blogDate.publishedAt}</p>
+                    <p className={styles.blogRightDate}>
+                      {blogDate.publishedAt}
+                    </p>
                   </div>
                 </li>
               ))}
