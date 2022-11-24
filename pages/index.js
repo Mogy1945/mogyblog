@@ -33,26 +33,43 @@ export default function Home({ blog }) {
       </Head>
       <Header />
       <main className={styles.main}>
-        <h3>Blog</h3>
-        <p>
-          【サイト利用技術】Next.js、SSR、SCSS、microCMS、nodemailer、Vercel
-        </p>
-        <div>
-          <ul className={styles.blogContainer}>
-            {blog.map((blogDate) => (
-              <li key={blogDate.id}>
-                <Image
-                  height={400}
-                  width={400}
-                  alt="サムネイル画像です"
-                  src={blogDate.sumbnail.path.url}
-                />
-                <Link href={`/blog/${blogDate.id}`}>
-                  <span>{blogDate.title}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <div className={styles.container}>
+          <h3>Blog</h3>
+          <p>
+            【サイト利用技術】Next.js、SSR、SCSS、microCMS、nodemailer、Vercel
+          </p>
+          <div>
+            <h4 className={styles.latest}>Latest</h4>
+            <ul className={styles.blogContainer}>
+              {blog.map((blogDate) => (
+                <li key={blogDate.id}>
+                  <div className={styles.blogLeft}>
+                    {blogDate.sumbnail !== null ? (
+                      <Image
+                        height={400}
+                        width={400}
+                        alt="サムネイル画像です"
+                        src={blogDate.sumbnail.path.url}
+                      />
+                    ) : (
+                      <Image
+                        height={400}
+                        width={400}
+                        alt="サムネイル画像です"
+                        src="https://source.unsplash.com/random"
+                      />
+                    )}
+                    <Link href={`/blog/${blogDate.id}`}></Link>
+                  </div>
+                  <div className={styles.blogRight}>
+                    <p className={styles.blogRightTitle}>{blogDate.title}</p>
+                    <p className={styles.blogRightDetail}>{blogDate.detail}</p>
+                    <p className={styles.blogRightDate}>{blogDate.publishedAt}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </main>
     </>
