@@ -15,7 +15,7 @@
 
   .searchBtn {
     cursor: pointer;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     margin-top: 2rem;
@@ -110,11 +110,11 @@
       }
     }
 
-    .categoryContainer {
+    .categoryContainer2, .categoryContainer{
       border-radius: 15px;
       width: 30vw;
       margin-top: 2rem;
-      display: flex;
+      flex-wrap: wrap;
       transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
 
       .categoryListContainer {
@@ -178,6 +178,10 @@
       padding: 0;
     }
 
+    .searchBtn {
+      display: flex;
+    }
+
     .latest {
       width: 100%;
     }
@@ -199,6 +203,10 @@
             }
           }
         }
+      }
+
+      .categoryContainer2 {
+        display: none;
       }
 
       .categoryContainer {

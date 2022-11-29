@@ -98,6 +98,19 @@ export default function Home({ blog, category }) {
                   </li>
                 ))}
               </ul>
+              {/* PC */}
+              <div className={styles.categoryContainer2}>
+                <ul className={styles.categoryListContainer}>
+                  {category.contents.map((categoryDate) => (
+                    <li key={categoryDate.id}>
+                      <Link href={`/category/${categoryDate.id}`}>
+                        <span>{categoryDate.name}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              {/* SP */}
               {modalFlag ? (
                 <div className={styles.categoryContainer}>
                   <ul className={styles.categoryListContainer}>
