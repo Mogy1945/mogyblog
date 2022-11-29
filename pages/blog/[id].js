@@ -23,9 +23,6 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const { id } = context.params
   const data = await client.get({ endpoint: 'blog', contentId: id })
-  console.log(id)
-  console.log(data)
-
   return {
     props: {
       blog: data,
@@ -39,7 +36,6 @@ export const getStaticProps = async (context) => {
  *  -dangerouslySetInnerHTML ⇒ html形式でコンテンツを表示※非推奨だが、入力はcmsからしか行われないためOK
  */
 export default function BlogId({ blog }) {
-  console.log(blog)
   return (
     <main id="top" className={styles.main}>
       <section>
