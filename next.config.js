@@ -3,7 +3,6 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: ['images.microcms-assets.io', 'source.unsplash.com'],
-    loader: 'akamai',
     path: '/',
   },
 }
