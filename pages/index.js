@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useState } from 'react'
 import client from '../libs/client'
 import styles from '../styles/Home.module.scss'
 import Header from '../components/Header'
@@ -13,10 +14,12 @@ import Header from '../components/Header'
  */
 export const getServerSideProps = async () => {
   const data = await client.get({ endpoint: 'blog' })
-
+  const categoryData = await client.get({ endpoint: 'categories' })
+  const jsonData = JSON.parse(JSON.stringify(categoryData))
   return {
     props: {
       blog: data.contents,
+      category: jsonData,
     },
   }
 }
@@ -25,7 +28,8 @@ export const getServerSideProps = async () => {
  * ブログデータをブラウザにレンダリング
  *  -blog ⇒ getStaticePropsの戻り値が引数にわたってくる
  */
-export default function Home({ blog }) {
+export default function Home({ blog, category }) {
+  const [modalFlag, setModalFlag] = useState(false)
   return (
     <>
       <Head>
@@ -38,45 +42,86 @@ export default function Home({ blog }) {
           <p>
             【サイト利用技術】Next.js、SSR、SCSS、microCMS、nodemailer、Vercel
           </p>
+          <p
+            className={styles.searchBtn}
+            onClick={() => {
+              setModalFlag(true)
+            }}
+          >
+            <Image
+              height={25}
+              width={25}
+              alt="カテゴリー検索のボタンです"
+              src="/search-icon.png"
+            />
+            カテゴリー検索
+          </p>
           <div>
             <h4 className={styles.latest}>Latest</h4>
-            <ul className={styles.blogContainer}>
-              {blog.map((blogDate) => (
-                <li key={blogDate.id}>
-                  <Link
-                    href={`/blog/${blogDate.id}`}
-                    className={styles.linkBox}
-                  >
-                    <div className={styles.blogLeft}>
-                      {blogDate.sumbnail !== null ? (
-                        <Image
-                          height={400}
-                          width={400}
-                          alt="サムネイル画像です"
-                          src={blogDate.sumbnail.path.url}
-                        />
-                      ) : (
-                        <Image
-                          height={400}
-                          width={400}
-                          alt="サムネイル画像です"
-                          src="https://source.unsplash.com/random"
-                        />
-                      )}
+            <div className={styles.column}>
+              <ul className={styles.blogContainer}>
+                {blog.map((blogDate) => (
+                  <li key={blogDate.id}>
+                    <Link
+                      href={`/blog/${blogDate.id}`}
+                      className={styles.linkBox}
+                    >
+                      <div className={styles.blogLeft}>
+                        {blogDate.sumbnail !== null ? (
+                          <Image
+                            height={300}
+                            width={300}
+                            alt="サムネイル画像です"
+                            src={blogDate.sumbnail.path.url}
+                          />
+                        ) : (
+                          <Image
+                            height={300}
+                            width={300}
+                            alt="サムネイル画像です"
+                            src="https://source.unsplash.com/random"
+                          />
+                        )}
+                      </div>
+                      <div className={styles.blogRight}>
+                        <p className={styles.blogRightTitle}>
+                          {blogDate.title}
+                        </p>
+                        <p className={styles.blogRightDetail}>
+                          {blogDate.detail}
+                        </p>
+                        <p className={styles.blogRightDate}>
+                          {blogDate.publishedAt}
+                        </p>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              {modalFlag ? (
+                <div className={styles.categoryContainer}>
+                  <ul className={styles.categoryListContainer}>
+                    <div
+                      className={styles.closeBtnContainer}
+                      onClick={() => {
+                        setModalFlag(false)
+                      }}
+                    >
+                      <span className={styles.closeBtn}></span>
                     </div>
-                    <div className={styles.blogRight}>
-                      <p className={styles.blogRightTitle}>{blogDate.title}</p>
-                      <p className={styles.blogRightDetail}>
-                        {blogDate.detail}
-                      </p>
-                      <p className={styles.blogRightDate}>
-                        {blogDate.publishedAt}
-                      </p>
-                    </div>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                    {category.contents.map((categoryDate) => (
+                      <li key={categoryDate.id}>
+                        <Link href={`/category/${categoryDate.id}`}>
+                          <span>{categoryDate.name}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : (
+                ''
+              )}
+            </div>
           </div>
         </div>
       </main>
