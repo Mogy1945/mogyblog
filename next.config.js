@@ -5,7 +5,6 @@ const nextConfig = {
   images: {
     domains: ['images.microcms-assets.io', 'source.unsplash.com'],
   },
-  basePath: '/public',
 }
 
 module.exports = nextConfig
