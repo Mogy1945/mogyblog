@@ -54,8 +54,6 @@ const Contact = () => {
         <h3>Contact</h3>
         <p>
           お問い合わせの際は、以下項目を記入し、「送信」ボタンを押してください。
-          <br />
-          -SendGrid
         </p>
         <div className={styles.formContainer}>
           <form>
