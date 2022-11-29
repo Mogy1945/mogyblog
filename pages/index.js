@@ -12,7 +12,18 @@ import Header from '../components/Header'
  *  -getStaticProps ⇒ ビルド時に一度だけ実行
  *  -blog ⇒ blog[{title:...,body...,・・・},{title:...,・・・}]の形でデータが格納されている
  */
-export const getServerSideProps = async () => {
+// export const getServerSideProps = async () => {
+//   const data = await client.get({ endpoint: 'blog' })
+//   const categoryData = await client.get({ endpoint: 'categories' })
+//   const jsonData = JSON.parse(JSON.stringify(categoryData))
+//   return {
+//     props: {
+//       blog: data.contents,
+//       category: jsonData,
+//     },
+//   }
+// }
+export const getStaticProps = async () => {
   const data = await client.get({ endpoint: 'blog' })
   const categoryData = await client.get({ endpoint: 'categories' })
   const jsonData = JSON.parse(JSON.stringify(categoryData))
