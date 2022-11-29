@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Link from 'next/link'
 import client from '../../libs/client'
 import styles from '../../styles/Blog.module.scss'
@@ -37,45 +38,50 @@ export const getStaticProps = async (context) => {
  */
 export default function BlogId({ blog }) {
   return (
-    <main id="top" className={styles.main}>
-      <section>
-        <h1 className={styles.title}>{blog.title}</h1>
-        <div className={styles.headInfo}>
-          <div className={styles.flowNavi}>
-            <Link href="/">
-              <span>記事一覧</span>
-            </Link>
-            <span>&gt;&gt;</span>
-            <span>{blog.title}(本記事)</span>
+    <>
+      <Head>
+        <title>{blog.title} | Mogy-Blog</title>
+      </Head>
+      <main id="top" className={styles.main}>
+        <section>
+          <h1 className={styles.title}>{blog.title}</h1>
+          <div className={styles.headInfo}>
+            <div className={styles.flowNavi}>
+              <Link href="/">
+                <span>記事一覧</span>
+              </Link>
+              <span>&gt;&gt;</span>
+              <span>{blog.title}(本記事)</span>
+            </div>
+            <div className={styles.time}>
+              <p className={styles.updatedAt}>最終更新日:{blog.updatedAt}</p>
+            </div>
           </div>
-          <div className={styles.time}>
-            <p className={styles.updatedAt}>最終更新日:{blog.updatedAt}</p>
+          <div className={styles.categoryContainer}>
+            {blog.category.map((category) => {
+              return (
+                <p key={category.id} className={`category ${category.name}`}>
+                  {category.name}
+                </p>
+              )
+            })}
           </div>
-        </div>
-        <div className={styles.categoryContainer}>
-          {blog.category.map((category) => {
-            return (
-              <p key={category.id} className={`category ${category.name}`}>
-                {category.name}
-              </p>
-            )
-          })}
-        </div>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: `${blog.body}`,
-          }}
-          className={styles.post}
-        />
-      </section>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: `${blog.body}`,
+            }}
+            className={styles.post}
+          />
+        </section>
 
-      <Link href="/" className={styles.bottomLink}>
-        記事一覧に戻る
-      </Link>
+        <Link href="/" className={styles.bottomLink}>
+          記事一覧に戻る
+        </Link>
 
-      <Link href="#top" className={styles.toTopLink}>
-        <div className={styles.pagetopArrow}></div>
-      </Link>
-    </main>
+        <Link href="#top" className={styles.toTopLink}>
+          <div className={styles.pagetopArrow}></div>
+        </Link>
+      </main>
+    </>
   )
 }

@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import client from '../../libs/client'
@@ -45,6 +46,9 @@ export default function CategoryId({ blog, categoryName }) {
   if (blog.length === 0) {
     return (
       <>
+        <Head>
+          <title>Category | Mogy-Blog</title>
+        </Head>
         <Header />
         <main className={styles.main}>
           <div className={styles.container}>
