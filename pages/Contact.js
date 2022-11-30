@@ -1,47 +1,30 @@
-import { useState } from 'react'
 import Head from 'next/head'
+import { useState } from 'react'
 import Header from '../components/Header'
 import styles from '../styles/Contact.module.scss'
 
-const Contact = () => {
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    msg: '',
-  })
-
-  const [focusNameFlag, setFocusNameFlag] = useState('')
-  const [focusEmailFlag, setFocusEmailFlag] = useState('')
-  const [focusCommentFlag, setFocusCommentFlag] = useState('')
-
+export default function Form() {
+  const [Name, setName] = useState('')
+  const [Email, setEmail] = useState('')
+  const [Message, setMessage] = useState('')
   const [modalFlag, setmodalFlag] = useState(false)
-  const [modalOKFlag, setmodalOKFlag] = useState(false)
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    fetch('/api/mail', {
-      method: 'POST',
+  // mail_api setting
+  const registerUser = async (event) => {
+    event.preventDefault()
+    const res = await fetch('/api/send', {
       body: JSON.stringify({
-        name: form.name,
-        email: form.email,
-        msg: form.msg,
+        name: Name,
+        email: Email,
+        message: Message,
       }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
     })
-      .then((res) => {
-        console.log('Response received')
-        setmodalFlag(true)
-        if (res.status === 200) {
-          console.log('Response succeeded!')
-          setmodalOKFlag(true)
-        } else {
-          console.log(`Error: Status Code ${res.status}`)
-          setmodalOKFlag(false)
-        }
-      })
-      .catch((error) => {
-        console.log(`Error: ${error}`)
-      })
+
+    await res.json()
   }
 
   return (
@@ -56,96 +39,62 @@ const Contact = () => {
           お問い合わせの際は、以下項目を記入し、「送信」ボタンを押してください。
         </p>
         <div className={styles.formContainer}>
-          <form>
-            <input
-              onChange={(e) => {
-                const val = e.currentTarget.value
-                setForm((props) => ({
-                  ...props,
-                  name: val !== null ? val : '',
-                }))
-              }}
-              onFocus={() => {
-                setFocusNameFlag(`focused`)
-              }}
-              onBlur={() => {
-                setFocusNameFlag('')
-              }}
-              value={form.name}
-              name="name"
-              type="text"
-              className={focusNameFlag}
-              placeholder="お名前"
-            />
-            <input
-              onChange={(e) => {
-                const val = e.currentTarget.value
-                setForm((props) => ({
-                  ...props,
-                  email: val !== null ? val : '',
-                }))
-              }}
-              onFocus={() => {
-                setFocusEmailFlag(`focused`)
-              }}
-              onBlur={() => {
-                setFocusEmailFlag('')
-              }}
-              name="email"
-              type="text"
-              className={focusEmailFlag}
-              placeholder="メールアドレス"
-            />
-            <textarea
-              onChange={(e) => {
-                const val = e.currentTarget.value
-                setForm((props) => ({
-                  ...props,
-                  msg: val !== null ? val : '',
-                }))
-              }}
-              onFocus={() => {
-                setFocusCommentFlag(`focused`)
-              }}
-              onBlur={() => {
-                setFocusCommentFlag('')
-              }}
-              name="text"
-              className={focusCommentFlag}
-              placeholder="お問い合わせ内容"
-            ></textarea>
-            <input
-              className={styles.submit}
-              onClick={async (e) => {
-                await handleSubmit(e)
-              }}
-              type="submit"
-              value="送信"
-            />
+          <form onSubmit={registerUser}>
+            <div className={styles.box}>
+              <p className={styles.title}>お名前</p>
+              <input
+                name="name"
+                type="text"
+                placeholder="例）山田太郎"
+                onBlur={(e) => {
+                  setName(e.target.value)
+                }}
+              />
+            </div>
+            <div className={styles.box}>
+              <p className={styles.title}>E-mailアドレス</p>
+              <input
+                name="email"
+                type="email"
+                placeholder="例）sample@test.co.jp"
+                onBlur={(e) => {
+                  setEmail(e.target.value)
+                }}
+              />
+            </div>
+            <div className={styles.box}>
+              <p className={styles.title}>お問い合わせ内容</p>
+              <textarea
+                placeholder="例）どうしてエンジニアになろうと思ったのですか？"
+                name="text"
+                onBlur={(e) => {
+                  setMessage(e.target.value)
+                }}
+              ></textarea>
+            </div>
+            <div className={styles.box}>
+              <input
+                type="submit"
+                className={styles.submit}
+                value="送信"
+                onClick={() => {
+                  setmodalFlag(true)
+                }}
+              />
+            </div>
           </form>
         </div>
         {modalFlag ? (
           <>
             <div className={styles.modalContainer}>
-              <p className={styles.modalTitle}>
-                {modalOKFlag ? 'Success!' : 'NG'}
+              <p className={styles.modalTitle}>Success!</p>
+              <p className={styles.modalText}>
+                送信しました！返信まで少々お待ちください。
               </p>
-              {modalOKFlag ? (
-                <p className={styles.modalText}>
-                  送信しました！返信まで少々お待ちください。
-                </p>
-              ) : (
-                <p className={styles.modalText}>
-                  送信に失敗しました。全ての項目に記入しているか、
-                  <br className={styles.pc} />
-                  メールアドレスに間違いはないか、今一度ご確認をお願いいたします。
-                </p>
-              )}
               <button
                 className={styles.modalButton}
                 onClick={() => {
                   setmodalFlag(false)
-                  setmodalOKFlag(false)
                 }}
               >
                 閉じる
@@ -160,5 +109,3 @@ const Contact = () => {
     </>
   )
 }
-
-export default Contact

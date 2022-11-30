@@ -29,30 +29,42 @@
             flex-direction: column;
             align-items: center;
 
-            input,
-            textarea {
-                width: 30vw;
+            .box {
                 margin-top: 2rem;
-            }
 
-            input {
-                height: 4rem;
-                border: 1px solid rgba($color: #3956A3, $alpha: 0.6);
-                font-family: MAIN_FONT, sans-serif;
-                transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
-            }
+                .title {
+                    font-size: 1.4rem;
+                    text-align: left;
+                    color: #3956A3;
+                    font-weight: bold;
+                }
 
-            textarea {
-                height: 8rem;
-                border: 1px solid rgba($color: #3956A3, $alpha: 0.6);
-                font-family: MAIN_FONT, sans-serif;
-                transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
-            }
+                input,
+                textarea {
+                    width: 30vw;
+                    margin-top: 0.5rem;
+                }
 
-            input::placeholder,
-            ::placeholder {
-                font-family: MAIN_FONT, sans-serif;
-                color: #979797;
+                input {
+                    height: 4rem;
+                    border: 1px solid rgba($color: #3956A3, $alpha: 0.6);
+                    font-family: MAIN_FONT, sans-serif;
+                    transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+                }
+
+                textarea {
+                    height: 8rem;
+                    border: 1px solid rgba($color: #3956A3, $alpha: 0.6);
+                    font-family: MAIN_FONT, sans-serif;
+                    transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+                }
+
+                input::placeholder,
+                ::placeholder {
+                    font-family: MAIN_FONT, sans-serif;
+                    color: #979797;
+                }
+
             }
 
             .submit {
@@ -136,15 +148,17 @@
     }
 
     //SP
-    @media screen and (max-width:550px) {
-            .pc {
-                display: none;
-            }
+    @media screen and (max-width:1000px) {
+        .pc {
+            display: none;
+        }
 
-            .formContainer {
-                width: 80vw;
+        .formContainer {
+            width: 80vw;
 
-                form {
+            form {
+
+                .box {
 
                     input,
                     textarea {
@@ -161,60 +175,62 @@
                         }
                     }
                 }
+
+            }
+        }
+
+        .modalContainer {
+            width: 100vw;
+            height: 50vh;
+            background-color: #D7EAFF;
+            position: absolute;
+            z-index: 1001;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);
+            transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+
+            .modalTitle {
+                font-size: 5rem;
+                top: 10%;
+                transform: translateY(-10%) translateX(-50%);
             }
 
-            .modalContainer {
-                width: 100vw;
-                height: 50vh;
-                background-color: #D7EAFF;
+            .modalText {
+                top: 60%;
+                transform: translateY(-60%) translateX(-50%);
+            }
+
+            .modalButton {
+                cursor: pointer;
                 position: absolute;
-                z-index: 1001;
-                top: 50%;
+                top: 90%;
                 left: 50%;
-                transform: translateY(-50%) translateX(-50%);
+                transform: translateY(-70%) translateX(-50%);
+
+                font-size: 1.6rem;
+                padding: 0.5rem;
+                color: rgb(255, 255, 255);
+                border: 1px solid rgba(100, 100, 100, 0);
+                background-color: #3956A3;
                 transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
 
-                .modalTitle {
-                    font-size: 5rem;
-                    top: 10%;
-                    transform: translateY(-10%) translateX(-50%);
+                &:hover {
+                    background-color: #F0FFFF;
+                    border: 1px solid #3956A3;
+                    color: #3956A3;
+                    font-weight: 550;
                 }
 
-                .modalText {
-                    top: 60%;
-                    transform: translateY(-60%) translateX(-50%);
-                }
-
-                .modalButton {
-                    cursor: pointer;
-                    position: absolute;
-                    top: 90%;
-                    left: 50%;
-                    transform: translateY(-70%) translateX(-50%);
-
-                    font-size: 1.6rem;
-                    padding: 0.5rem;
-                    color: rgb(255, 255, 255);
-                    border: 1px solid rgba(100, 100, 100, 0);
-                    background-color: #3956A3;
-                    transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
-
-                    &:hover {
-                        background-color: #F0FFFF;
-                        border: 1px solid #3956A3;
-                        color: #3956A3;
-                        font-weight: 550;
-                    }
-
-                    &:active {
-                        transform: scale(.95);
-                        background-color: #F0FFFF;
-                        border: 1px solid #3956A3;
-                        color: #3956A3;
-                        font-weight: 550;
-                    }
+                &:active {
+                    transform: scale(.95);
+                    background-color: #F0FFFF;
+                    border: 1px solid #3956A3;
+                    color: #3956A3;
+                    font-weight: 550;
                 }
             }
+        }
 
     }
 }
