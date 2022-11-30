@@ -5,7 +5,7 @@
         background-color: white;
         padding: 0;
 
-        .categoryContainer{
+        .categoryContainer {
             display: flex;
         }
 
@@ -24,7 +24,7 @@
                 a {
                     color: #0059ff;
 
-                    &:hover{
+                    &:hover {
                         opacity: 0.6;
                     }
                 }
@@ -207,8 +207,13 @@
     }
 
     @media (prefers-color-scheme: dark) {
-        .post{
+        .flowNavi {
             color: #060606;
+        }
+
+        .post {
+            color: #060606;
+
         }
     }
 }
