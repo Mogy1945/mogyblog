@@ -13,6 +13,7 @@ export default function About() {
       <Header />
       <main className={styles.main}>
         <h3>About</h3>
+        <p>私、Mogyの経歴やプロフィール</p>
         <div className={styles.profileContainer}>
           <div className={styles.profileInfo}>
             <Image
