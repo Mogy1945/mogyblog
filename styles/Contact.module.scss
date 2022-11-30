@@ -293,4 +293,11 @@
             width: 50vw;
         }
     }
+
+    //ダークモード対応
+    @media (prefers-color-scheme: dark) {
+        .result{
+            color: #060606;
+        }
+    }
 }
