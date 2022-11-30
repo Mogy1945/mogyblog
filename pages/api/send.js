@@ -1,10 +1,24 @@
 const sgMail = require('@sendgrid/mail')
 
-const apiKey = process.env.NEXT_PUBLIC_MAIL_API
+// 開発環境(APYKEY from env)
+// const apiKey = process.env.NEXT_PUBLIC_MAIL_API
 
-export default function handler(req, res) {
+// 本番環境(APYKEY from vercel)
+export async function getStaticProps() {
+  return {
+    props: {
+      ApiKey: process.env.NEXT_PUBLIC_MAIL_API,
+    },
+  }
+}
+
+export default function handler(req, res, { ApiKey }) {
   if (req.method === 'POST') {
-    sgMail.setApiKey(apiKey)
+    // 開発環境(APYKEY)
+    // sgMail.setApiKey(apiKey)
+
+    // 本番環境(APYKEY)
+    sgMail.setApiKey(ApiKey)
 
     const Name = req.body.name
 
