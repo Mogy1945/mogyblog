@@ -51,7 +51,7 @@ export default function Home({ blog, category }) {
         <div className={styles.container}>
           <h3>Blog</h3>
           <p>
-            【サイト利用技術】Next.js、SSR、SCSS、microCMS、nodemailer、Vercel
+            【サイト利用技術・サービス】Next.js、SSR、SSG、SCSS、microCMS、Formspree、Vercel
           </p>
           <p
             className={styles.searchBtn}
