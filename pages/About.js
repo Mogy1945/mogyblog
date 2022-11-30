@@ -22,7 +22,7 @@ export default function About() {
               height={200}
             />
             <div className={styles.twitterIcon}>
-              <Link href="">
+              <Link href="https://twitter.com/xunmogy2022" target="_blank">
                 <Image
                   src="/twitter-icon.png"
                   alt="TwitterIcon"
@@ -31,6 +31,7 @@ export default function About() {
                 />
               </Link>
             </div>
+            <span>/フォローお願いします！\</span>
           </div>
           <div className={styles.profileText}>
             <p className={styles.profileHead}>Profile</p>
