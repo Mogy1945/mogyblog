@@ -10,6 +10,9 @@ export default function Form() {
   const [Name, setName] = useState('')
   const [Email, setEmail] = useState('')
   const [Message, setMessage] = useState('')
+  const [errorName, setErrorName] = useState(false)
+  const [errorEmail, setErrorEmail] = useState(false)
+  const [errorMessage, setErrorMessage] = useState(false)
 
   if (state.succeeded) {
     return (
@@ -54,7 +57,9 @@ export default function Form() {
       <main className={styles.main}>
         <h3>Contact</h3>
         <p>
-          お問い合わせの際は、以下項目を記入し、「送信」ボタンを押してください。
+          お問い合わせの際は、以下項目を
+          <span className={styles.notNull}>全て</span>
+          記入し、「送信」ボタンを押してください。
         </p>
         <div className={styles.formContainer}>
           <form onSubmit={handleSubmit}>
@@ -66,9 +71,25 @@ export default function Form() {
                 type="text"
                 placeholder="例）山田太郎"
                 onBlur={(e) => {
-                  setName(e.target.value)
+                  const val = e.target.value
+                  const valLENGTH = val.length
+                  if (valLENGTH > 0) {
+                    setErrorName(false)
+                    setName(e.target.value)
+                  } else {
+                    setErrorName(true)
+                  }
                 }}
               />
+              {errorName ? (
+                <>
+                  <p className={styles.errorText}>
+                    ！必ずご入力をお願いいたします。
+                  </p>
+                </>
+              ) : (
+                ''
+              )}
             </div>
             <div className={styles.box}>
               <p className={styles.title}>E-mailアドレス</p>
@@ -78,9 +99,25 @@ export default function Form() {
                 name="email"
                 placeholder="例）sample@test.co.jp"
                 onBlur={(e) => {
-                  setEmail(e.target.value)
+                  const val = e.target.value
+                  const valLENGTH = val.length
+                  if (valLENGTH > 0) {
+                    setErrorEmail(false)
+                    setEmail(e.target.value)
+                  } else {
+                    setErrorEmail(true)
+                  }
                 }}
               />
+              {errorEmail ? (
+                <>
+                  <p className={styles.errorText}>
+                    ！必ずご入力をお願いいたします。
+                  </p>
+                </>
+              ) : (
+                ''
+              )}
               <ValidationError
                 prefix="Email"
                 field="email"
@@ -94,9 +131,25 @@ export default function Form() {
                 name="message"
                 placeholder="例）どうしてエンジニアになろうと思ったのですか？"
                 onBlur={(e) => {
-                  setMessage(e.target.value)
+                  const val = e.target.value
+                  const valLENGTH = val.length
+                  if (valLENGTH > 0) {
+                    setErrorMessage(false)
+                    setMessage(e.target.value)
+                  } else {
+                    setErrorMessage(true)
+                  }
                 }}
               ></textarea>
+              {errorMessage ? (
+                <>
+                  <p className={styles.errorText}>
+                    ！必ずご入力をお願いいたします。
+                  </p>
+                </>
+              ) : (
+                ''
+              )}
               <ValidationError
                 prefix="Message"
                 field="message"
@@ -106,7 +159,9 @@ export default function Form() {
             <div className={styles.box}>
               <input
                 type="submit"
-                disabled={state.submitting}
+                disabled={
+                  errorName || errorEmail || errorMessage ? 'disabled' : ''
+                }
                 className={styles.submit}
                 value="送信"
               />
