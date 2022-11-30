@@ -12,13 +12,15 @@ export async function getStaticProps() {
   }
 }
 
-export default function handler(req, res, { ApiKey }) {
+export default function handler(req, res) {
   if (req.method === 'POST') {
     // 開発環境(APYKEY)
     // sgMail.setApiKey(apiKey)
 
     // 本番環境(APYKEY)
-    sgMail.setApiKey(ApiKey)
+    sgMail.setApiKey(
+      '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'
+    )
 
     const Name = req.body.name
 
