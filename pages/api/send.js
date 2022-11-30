@@ -3,7 +3,6 @@ const sgMail = require('@sendgrid/mail')
 const apiKey = process.env.NEXT_PUBLIC_MAIL_API
 
 export default function handler(req, res) {
-  console.log(apiKey)
   if (req.method === 'POST') {
     sgMail.setApiKey(apiKey)
 
