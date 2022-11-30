@@ -26,29 +26,29 @@ export default function handler(req, res) {
       Twitter: @test
       ----------------------------
       `,
-      // html: `<h4>お問合せを受け付けました</h4>
-      // <p>
-      // ${Name} 様
-      // </p>
-      // <p>
-      // お問合せいただきありがとうございます。
-      // <br />
-      // 回答まで暫くお待ちください。
-      // </p>
-      // <p>
-      // 【お問合せ内容】
-      // <br />
-      // ${req.body.message}
-      // </p>
-      // <hr>
-      // <p>
-      // Name   : Mogy
-      // </p>
-      // <p>
-      // Twitter: @test
-      // </p>
-      // <hr>
-      // `,
+      html: `<h4>お問合せを受け付けました</h4>
+      <p>
+      ${Name} 様
+      </p>
+      <p>
+      お問合せいただきありがとうございます。
+      <br />
+      回答まで暫くお待ちください。
+      </p>
+      <p>
+      【お問合せ内容】
+      <br />
+      ${req.body.message}
+      </p>
+      <hr>
+      <p>
+      Name   : Mogy
+      </p>
+      <p>
+      Twitter: @test
+      </p>
+      <hr>
+      `,
     }
     ;(async () => {
       try {
