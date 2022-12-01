@@ -5,25 +5,13 @@ import { useState } from 'react'
 import client from '../libs/client'
 import styles from '../styles/Home.module.scss'
 import Header from '../components/Header'
-import { GA_TRACKING_ID } from '../libs/gtag'
 
 /**
  * APIからブログデータを引っ張ってくる
  *  -client ⇒ libs/client.jsでAPIを指定しブログデータを取得
- *  -getStaticProps ⇒ ビルド時に一度だけ実行
+ *  -getStaticProps ⇒ ビルド時に一度だけ実行※microCMS投稿時に再ビルドされるのでSSGでOK
  *  -blog ⇒ blog[{title:...,body...,・・・},{title:...,・・・}]の形でデータが格納されている
  */
-// export const getServerSideProps = async () => {
-//   const data = await client.get({ endpoint: 'blog' })
-//   const categoryData = await client.get({ endpoint: 'categories' })
-//   const jsonData = JSON.parse(JSON.stringify(categoryData))
-//   return {
-//     props: {
-//       blog: data.contents,
-//       category: jsonData,
-//     },
-//   }
-// }
 export const getStaticProps = async () => {
   const data = await client.get({ endpoint: 'blog' })
   const categoryData = await client.get({ endpoint: 'categories' })
@@ -46,26 +34,6 @@ export default function Home({ blog, category }) {
     <>
       <Head>
         <title>Blog | Mogy-Blog</title>
-        {GA_TRACKING_ID != null && (
-          <>
-            {/* Global Site Tag (gtag.js) - Google Analytics */}
-            <script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${GA_TRACKING_ID}', {
-            page_path: window.location.pathname,
-          });`,
-              }}
-            />
-          </>
-        )}
       </Head>
       <Header />
       <main className={styles.main}>
