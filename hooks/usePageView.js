@@ -1,0 +1,25 @@
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
+
+import { existsGaId, pageview } from '../libs/gtag'
+
+export default function usePageView() {
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!existsGaId) {
+      return
+    }
+
+    const handleRouteChange = (path) => {
+      pageview(path)
+    }
+
+    router.events.on('routeChangeComplete', handleRouteChange)
+
+    // eslint-disable-next-line consistent-return
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
+}
