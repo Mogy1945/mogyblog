@@ -21,22 +21,28 @@ export const getStaticProps = async (context) => {
   })
 
   // IDチェック
-  let flag = false
+  // let flag = false
   let categoryName = ''
+  const destData = []
   // eslint-disable-next-line array-callback-return
   data.contents.map((blog) => {
+    console.log('blog')
+    console.log(blog)
     // eslint-disable-next-line array-callback-return
     blog.category.map((blog2) => {
       if (blog2.id === id) {
         categoryName = blog2.name
-        flag = true
+        // flag = true
+        destData.push(blog)
       }
     })
   })
 
+  // console.log('data.contents')
+  // console.log(data.contents)
   return {
     props: {
-      blog: flag ? data.contents : [],
+      blog: destData,
       categoryName,
     },
   }
