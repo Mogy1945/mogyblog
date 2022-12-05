@@ -20,7 +20,7 @@ body {
 }
 
 body {
-  background-color: #F0FFFF;
+  background-color: #f0ffff;
 }
 
 main {
@@ -65,9 +65,9 @@ textarea {
 
 /* Contactでフォーカス時の処理 */
 .focused {
-  border-color: #8EE3C8 !important;
-  box-shadow: 0 0 8px 0 #8EE3C8 !important;
-  transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+  border-color: #8ee3c8 !important;
+  box-shadow: 0 0 8px 0 #8ee3c8 !important;
+  transition: 0.2s cubic-bezier(0.45, 0, 0.55, 1);
 }
 
 /* 各ページのHeader処理 */
@@ -95,14 +95,16 @@ textarea {
 .category.Next_js {
   background-color: #210514;
 }
-
-@media screen and (max-width:1182px) {
+.category.活動報告 {
+  background-color: #006bf6;
+}
+@media screen and (max-width: 1182px) {
   .category {
     width: 15vw;
   }
 }
 
-@media screen and (max-width:550px) {
+@media screen and (max-width: 550px) {
   .category {
     width: 25vw;
   }
