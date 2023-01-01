@@ -26,8 +26,6 @@ export const getStaticProps = async (context) => {
   const destData = []
   // eslint-disable-next-line array-callback-return
   data.contents.map((blog) => {
-    console.log('blog')
-    console.log(blog)
     // eslint-disable-next-line array-callback-return
     blog.category.map((blog2) => {
       if (blog2.id === id) {
@@ -38,8 +36,6 @@ export const getStaticProps = async (context) => {
     })
   })
 
-  // console.log('data.contents')
-  // console.log(data.contents)
   return {
     props: {
       blog: destData,
