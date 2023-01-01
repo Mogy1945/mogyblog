@@ -87,7 +87,7 @@ export default function CategoryId({ blog, categoryName }) {
                         height={400}
                         width={400}
                         alt="サムネイル画像です"
-                        src={blogDate.sumbnail.path.url}
+                        src="https://source.unsplash.com/random"
                       />
                     ) : (
                       <Image

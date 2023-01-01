@@ -72,7 +72,7 @@ export default function Home({ blog, category }) {
                             height={300}
                             width={300}
                             alt="サムネイル画像です"
-                            src={blogDate.sumbnail.path.url}
+                            src="https://source.unsplash.com/random"
                           />
                         ) : (
                           <Image
